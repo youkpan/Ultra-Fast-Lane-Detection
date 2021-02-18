@@ -1,6 +1,7 @@
 # DATA
 dataset='CULane'
-data_root = None
+#data_root = "D:\GitHub\LSTR\images"
+data_root ="D:/self-driving/Codes-for-Lane-Detection/culane/images"
 
 # TRAIN
 epoch = 50

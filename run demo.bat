@@ -1,0 +1,1 @@
+python demo.py configs/culane.py --test_model culane_18.pth

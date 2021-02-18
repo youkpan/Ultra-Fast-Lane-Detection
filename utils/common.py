@@ -69,7 +69,7 @@ def save_model(net, optimizer, epoch,save_path, distributed):
         model_path = os.path.join(save_path, 'ep%03d.pth' % epoch)
         torch.save(state, model_path)
 
-import pathspec
+#import pathspec
 
 def cp_projects(to_path):
     if is_main_process():

@@ -14,16 +14,21 @@ def loader_func(path):
 class LaneTestDataset(torch.utils.data.Dataset):
     def __init__(self, path, list_path, img_transform=None):
         super(LaneTestDataset, self).__init__()
+        
         self.path = path
         self.img_transform = img_transform
-        with open(list_path, 'r') as f:
-            self.list = f.readlines()
-        self.list = [l[1:] if l[0] == '/' else l for l in self.list]  # exclude the incorrect path prefix '/' of CULane
-
+        #with open(list_path, 'r') as f:
+        #    self.list = f.readlines()
+        #self.list = [l[1:] if l[0] == '/' else l for l in self.list]  # exclude the incorrect path prefix '/' of CULane
+        #self.list =["1.png","2.png","3.png","4.png","6.jpg"]#,"8.png","9.jpg","10.jpg","11.jpg"]
+        #self.list =["5.jpg","6.jpg","7.jpg","9.jpg","10.jpg","11.jpg"]
+        self.list = os.listdir(path)
+        self.list = [l[1:] if l[0] == '/' else l for l in self.list]
 
     def __getitem__(self, index):
         name = self.list[index].split()[0]
         img_path = os.path.join(self.path, name)
+        print("img_path:",img_path)
         img = loader_func(img_path)
 
         if self.img_transform is not None:
